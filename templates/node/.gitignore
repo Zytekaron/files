@@ -1,0 +1,22 @@
+# Globals
+.idea
+.vscode
+.env
+
+# NPM
+node_modules
+.npm
+.node_repl_history
+
+# Runtime data
+pids
+*.seed
+*.pid
+*.pid.lock
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

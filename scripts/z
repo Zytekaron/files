@@ -1,0 +1,84 @@
+#!/bin/bash
+
+########################################################################
+# This script was created by Michael Thornes (Zytekaron)               #
+# and is available at https://files.zytekaron.com/scripts/run/zget     #
+#                                                                      #
+# To install z on your system via the install script, use this:        #
+# λ curl -sfL https://files.zytekaron.com/scripts/run/zget | sudo bash #
+# You can give it a custom name by adding Z=custom_name before bash!   #
+########################################################################
+
+VERSION="1.2"
+
+SCRIPT_NAME=$(basename "$0")
+
+if [ $# -eq 0 ]; then
+    echo "Usage: $SCRIPT_NAME <install|update|remove|run> <script> [name]"
+    exit
+fi
+
+ACTION=$1
+SCRIPT=$2
+NAME=$3
+
+case $ACTION in
+    install|i|update|u|get)
+        if [ $EUID -ne 0 ]; then
+            echo "$SCRIPT_NAME must be running as root to install scripts."
+            exit 2
+        fi
+        
+        if [ -z "$SCRIPT" ]; then
+            echo "Updating this script..."
+            curl -sfL https://files.zytekaron.com/scripts/z >/usr/bin/$SCRIPT_NAME
+            echo "Done!"
+            exit
+        fi
+        
+        CMD=${NAME:-$SCRIPT}
+        
+        echo "Installing $SCRIPT to /usr/bin/$CMD"
+        curl -sfL https://files.zytekaron.com/scripts/$SCRIPT >/usr/bin/$CMD
+        chmod +x /usr/bin/$CMD
+    ;;
+    run|ie)
+        shift && shift
+        curl -sfL https://files.zytekaron.com/scripts/run/$SCRIPT | bash -s $@
+    ;;
+    download|dl|d)
+        shift
+        for path in "$@"; do
+            FILE=$(basename $path)
+            curl -sfL https://files.zytekaron.com/templates/$path > $FILE
+        done
+    ;;
+    remove|r|uninstall|ui|delete|d)
+        if [ $EUID -ne 0 ]; then
+            echo "$SCRIPT_NAME must be running as root to uninstall scripts."
+            exit 2
+        fi
+        
+        if [ -z "$SCRIPT" ]; then
+            echo "Deleting this script..."
+            rm /usr/bin/$SCRIPT_NAME
+            echo "Done! To re-install z, use the following command:"
+            echo "curl -sfL https://files.zytekaron.com/scripts/run/zget | sudo bash"
+            exit
+        fi
+        
+        if curl -s --head --request GET "https://files.zytekaron.com/scripts/$SCRIPT" | grep "404" >/dev/null; then
+            echo "WARNING: $SCRIPT cannot be found on the file server!"
+            echo "If you are absolutely sure you want to delete this script, delete it manually:"
+            echo "rm /usr/bin/$SCRIPT"
+            exit
+        fi
+        
+        echo "Uninstalling $NAME"
+        rm /usr/bin/$SCRIPT
+        echo "Done!"
+    ;;
+    version|-v)
+        echo "v$VERSION"
+    ;;
+esac

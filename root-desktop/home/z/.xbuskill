@@ -1,0 +1,5 @@
+#!/bin/bash
+
+echo "xbuskill invoked at $(date +%s)" >> /etc/xbuskill/log
+
+shutdown now # Shut down the machine to prevent access to files

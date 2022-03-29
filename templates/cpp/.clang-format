@@ -1,0 +1,6 @@
+IndentWidth: 4
+PointerAlignment: Left
+AllowShortIfStatementsOnASingleLine: Always
+
+AllowShortFunctionsOnASingleLine: Empty
+AlignAfterOpenBracket: AlwaysBreak

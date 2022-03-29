@@ -1,0 +1,5 @@
+sync_dir = "~/onedrive"
+skip_file = "~* | .~* | *.tmp"
+skip_dir = "node_modules"
+log_dir = "/var/log/onedrive"
+monitor_interval = "300"

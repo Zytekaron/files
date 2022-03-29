@@ -1,0 +1,12 @@
+INFO: |
+  Here's a list of packages I use for
+  most of my debian and ubuntu servers.
+  This list is currently not complete.
+
+# Base packages
+base: |
+  ufw fail2ban
+
+# Packages installed via `npm i -g name`
+npm-g: |
+  pm2

@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#########################################################################
+# This script was created by Michael Thornes (Zytekaron)                #
+# and is available at https://files.zytekaron.com/scripts/zsize         #
+#                                                                       #
+# To install zsize on your system, first install the z or zyte command. #
+# λ curl -sfL https://files.zytekaron.com/scripts/run/zget | sudo bash  #
+# You can give it a custom name by adding Z=custom_name before bash!    #
+#                                                                       #
+# Now, install using z:                                                 #
+# λ sudo z install zsize                                                #
+#########################################################################
+
+VERSION="1.0"
+
+SCRIPT_NAME=$(basename "$0")
+
+DIR=${1:-$(pwd)}
+
+echo "size information for $DIR"
+
+local_size=$(find $DIR -maxdepth 1 -type f -exec du -ch {} + 2>/dev/null | tail -n 1 | awk '{print $1}')
+echo "local directory size: ${LOCAL_SIZE:-0K}"
+echo "total directory size: $(du -shx $DIR 2>/dev/null | awk '{print $1}')"
+
+echo "local files: $(find $DIR -type f -maxdepth 1 2>/dev/null | wc -l)"
+echo "total files: $(find $DIR 2>/dev/null | wc -l)"

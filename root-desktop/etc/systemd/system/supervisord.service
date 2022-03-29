@@ -1,0 +1,14 @@
+Description=Supervisor process control system for UNIX
+Documentation=https://supervisord.org
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/supervisord -n
+ExecStop=/usr/bin/supervisorctl $OPTIONS shutdown
+ExecReload=/usr/bin/supervisorctl $OPTIONS reload
+KillMode=process
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target

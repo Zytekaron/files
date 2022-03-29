@@ -1,0 +1,5 @@
+#%PAM-1.0
+auth		sufficient	pam_u2f.so cue [cue_prompt=» Waiting for U2F] origin=pam://atlas appid=pam://atlas authfile=.ssh/u2f_keys
+auth		include		system-auth
+account		include		system-auth
+session		include		system-auth

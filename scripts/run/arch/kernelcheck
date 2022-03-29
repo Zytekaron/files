@@ -1,0 +1,33 @@
+#!/bin/bash
+
+################################################################################
+# This script was created by Michael Thornes (Zytekaron)                       #
+# and is available at https://files.zytekaron.com/scripts/run/arch/kernelcheck #
+#                                                                              #
+# To run arch/kernelcheck on your system, first install the z or zyte command. #
+# λ curl -sfL https://files.zytekaron.com/scripts/run/zget | sudo bash         #
+# You can give it a custom name by adding Z=custom_name before bash!           #
+#                                                                              #
+# Now, run using z:                                                            #
+# λ z run arch/kernelcheck                                                     #
+################################################################################
+
+FIND=""
+NEXT_LINE=0
+for I in `file /boot/vmlinuz*`; do
+    if [ $NEXT_LINE -eq 1 ]; then
+        FIND="$I"
+        NEXT_LINE=0
+    elif [ "$I" = "version" ]; then
+        NEXT_LINE=1;
+    fi
+done
+
+if [ ! "$FIND" = "" ]; then
+    if [ ! "$(uname -r)" = "$FIND" ]; then
+        echo "reboot required"
+        exit 0
+    fi
+fi
+
+echo "reboot not required"

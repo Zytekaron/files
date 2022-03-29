@@ -1,0 +1,43 @@
+#!/bin/bash
+
+################################################################################
+# This script was created by Michael Thornes (Zytekaron)                       #
+# and is available at https://files.zytekaron.com/scripts/run/arch/rankmirrors #
+#                                                                              #
+# To run arch/rankmirrors on your system, first install the z or zyte command. #
+# λ curl -sfL https://files.zytekaron.com/scripts/run/zget | sudo bash         #
+# You can give it a custom name by adding Z=custom_name before bash!           #
+#                                                                              #
+# Now, run using z:                                                            #
+# λ sudo z run arch/rankmirrors [country] [count] [protocol]                   #
+# λ sudo z run arch/rankmirrors US        10      https      (default options) #
+# λ sudo z run arch/rankmirrors                                                #
+################################################################################
+
+RUN_SCRIPT_NAME="arch/rankmirrors"
+
+if [ $EUID -ne 0 ]; then
+    echo "$RUN_SCRIPT_NAME must be running as root."
+    exit 2
+fi
+
+COUNTRY=${1:-US}
+COUNT=${2:-10}
+PROTOCOL=${3:-https}
+
+if ! [ -x "$(command -v rankmirrors)" ]; then
+    pacman -S --noconfirm pacman-contrib
+fi
+
+echo "Running rankmirrors"
+
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.backup
+
+URL="https://archlinux.org/mirrorlist/?country=$COUNTRY&protocol=$PROTOCOL&use_mirror_status=on"
+curl -s $URL | sed -e 's/^#Server/Server/' -e '/^#/d' | rankmirrors -n $COUNT - > /etc/pacman.d/mirrorlist
+
+echo "Finished ranking mirrors. If problems arise, restore your old mirrorlist by using:"
+echo "# mv /etc/pacman.d/mirrorlist.backup /etc/pacman.d/mirrorlist"
+echo ""
+echo "Mirrors:"
+cat /etc/pacman.d/mirrorlist

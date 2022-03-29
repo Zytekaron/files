@@ -1,0 +1,16 @@
+#!/bin/bash
+
+######################################################################
+# This script was created by Michael Thornes (Zytekaron)             #
+# and is available at https://files.zytekaron.com/scripts/run/zget   #
+#                                                                    #
+# To install zpm on your system via this script, use this command:   #
+# λ curl -sfL https://files.zytekaron.com/scripts/zget | sudo bash   #
+# You can give it a custom name by adding Z=custom_name before bash! #
+######################################################################
+
+NAME=${Z:-z}
+
+curl -sfL https://files.zytekaron.com/scripts/z >/usr/bin/$NAME
+chmod +x /usr/bin/$NAME
+echo "Installed $NAME to /usr/bin/$NAME"

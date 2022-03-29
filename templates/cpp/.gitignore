@@ -1,0 +1,9 @@
+# Globals
+.idea
+.vscode
+.env
+
+# C++
+.cache
+build
+out
