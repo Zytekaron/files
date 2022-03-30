@@ -57,6 +57,11 @@ onedrive --synchronize --download-only
 systemctl --user enable onedrive
 systemctl --user start onedrive
 
+# SSH Agent configuration !ssh
+#   /home/z/.config/systemd/user/ssh-agent.service
+systemctl --user enable ssh-agent.service
+systemctl --user start ssh-agent.service
+
 # Install and setup Nerd Fonts !git
 git clone https://github.com/ryanoasis/nerd-fonts
 cd nerd-fonts

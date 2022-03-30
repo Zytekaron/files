@@ -27,6 +27,15 @@ passwd z # set password
 curl -sfL https://files.zyte.dev/scripts/run/zget # verify content
 curl -sfL https://files.zyte.dev/scripts/run/zget | sudo bash
 
+# Configure SSH authorized_keys
+mkdir .ssh
+chmod 700 .ssh
+# create .ssh/authorized_keys with the public key here
+chmod 644 .ssh/authorized_keys
+# Modify /etc/ssh/sshd_config
+#   PasswordAuthentication no
+sudo systemctl restart sshd
+
 # UBUNTU: Java installation
 # - todo
 
