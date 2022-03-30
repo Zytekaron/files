@@ -57,8 +57,10 @@ onedrive --synchronize --download-only
 systemctl --user enable onedrive
 systemctl --user start onedrive
 
-# SSH Agent configuration !ssh
+# Agent configuration !ssh
+#   /home/z/.ssh/config
 #   /home/z/.config/systemd/user/ssh-agent.service
+#   /home/z/.gnupg/gpg-agent.conf
 systemctl --user enable ssh-agent.service
 systemctl --user start ssh-agent.service
 
