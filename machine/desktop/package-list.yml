@@ -47,7 +47,7 @@ cmdline-tools: |
   man man-db man-pages arch-wiki-docs
   arch-install-scripts neofetch cpufetch
   miniupnpc yt-dlp climate thefuck
-  onedrive-abraunegg
+  onedrive-abraunegg net-tools bind
 
 # Games! I only play Minecraft though. Pick one!
 games: |
