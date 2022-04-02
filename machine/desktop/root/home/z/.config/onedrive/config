@@ -1,5 +1,9 @@
 sync_dir = "~/onedrive"
 skip_file = "~* | .~* | *.tmp"
 skip_dir = "node_modules"
-log_dir = "/var/log/onedrive"
+
+skip_notifications = true
+
 monitor_interval = "300"
+
+log_dir = "/var/log/onedrive"
