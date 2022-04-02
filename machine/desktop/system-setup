@@ -36,7 +36,7 @@ makepkg -si
 
 # @z installation
 curl -sfL https://files.zyte.dev/scripts/run/zget # verify content
-curl -sfL https://files.zyte.dev/scripts/run/zget | sudo bash
+curl -sfL https://files.zyte.dev/scripts/run/zget | sudo Z=z bash
 
 # Configure and enable ufw !ufw
 sudo ufw enable
@@ -76,7 +76,7 @@ sudo ./install.sh
 git config --global init.defaultBranch master
 git config --global user.email "zytekaron@gmail.com"
 git config --global user.name "Michael Thornes"
-git config --global user.signingKey 1748C7E588D0646C # gpg --list-keys --keyid-format LONG
+git config --global user.signingKey 1748C7E588D0646C # gpg --list-secret-keys --keyid-format LONG
 
 # Setup supervisor services !sudo !supervisor
 #   /etc/supervisord.conf
@@ -112,7 +112,7 @@ flameshot config # gui
 
 # Configure keybinds:
 # - PrtSc = `flameshot gui`
-# - Mod+R = `dmenu_run -fn "Hack Nerd Font Mono:size=16:1"`
+# - Mod+R = `dmenu_run -sb teal -fn "Hack Nerd Font Mono:size=16:1"`
 # - Menu  = `terminal-emulator`
 
 # Configuring KVM & virt-manager
