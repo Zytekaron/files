@@ -13,9 +13,9 @@ installation: |
 # Base tools I use on most systems, roughly
 # sorted by their importance to my workflow.
 base: |
-  zsh git btop htop tree
-  ripgrep rsync xbindkeys
-  alacritty supervisor 7-zip
+  zsh git btop htop tree fd exa
+  ripgrep rsync xbindkeys aria2 nmap
+  alacritty supervisor 7-zip ps_mem
   speedtest-cli pacman-contrib
 
 # GUI programs for most things, including
