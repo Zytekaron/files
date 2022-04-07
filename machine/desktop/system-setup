@@ -43,6 +43,11 @@ sudo ufw enable
 sudo ufw allow ssh # only on simplesystems
 sudo ufw allow http # any system is ok
 
+# Configure and enable fail2ban !fail2ban
+#   /etc/fail2ban/jail.local
+sudo systemctl enable fail2ban
+sudo systemctl start fail2ban
+
 # Optional rankmirrors @z !sudo !pacman-contrib
 sudo z run arch/rankmirrorrs # wait 20-30 seconds
 

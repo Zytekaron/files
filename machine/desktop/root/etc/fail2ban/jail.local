@@ -1,0 +1,12 @@
+[DEFAULT]
+maxretry = 10
+bantime = 1d
+banaction = ufw
+backend = systemd
+ignoreip = 127.0.0.1
+
+[sshd]
+enabled = true
+port = ssh
+filter = sshd
+logpath = /var/log/auth.log
