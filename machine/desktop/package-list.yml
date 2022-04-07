@@ -21,7 +21,7 @@ base: |
 # GUI programs for most things, including
 # system management and chat platforms.
 gui: |
-  brave-bin sxiv spotify
+  brave-bin sxiv spotify termius
   dolphin gparted filelight
   flameshot noisetorch vlc
 
