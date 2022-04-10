@@ -62,7 +62,3 @@ wm: |
   xorg xorg-server xorg-xinit
   picom
   dmenu
-
-# For KDE. This is temporary.
-kde: |
-  plasma
