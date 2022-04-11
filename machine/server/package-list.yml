@@ -5,7 +5,18 @@ INFO: |
 
 # Base packages
 base: |
-  ufw fail2ban
+  zsh git btop htop tree fd exa
+  rsync aria2 nmap supervisor 7-zip
+  ps_mem speedtest-cli pacman-contrib
+
+# Build-essential packages
+build: |
+  base-devel linux-headers
+  go rust nodejs npm elixir postman
+
+# Security-related packages
+security: |
+  ufw fail2ban srm
 
 # Packages installed via `npm i -g name`
 npm-g: |
