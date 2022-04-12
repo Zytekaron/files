@@ -17,6 +17,7 @@ base: |
   ripgrep rsync xbindkeys aria2 nmap
   alacritty supervisor 7-zip ps_mem
   speedtest-cli pacman-contrib
+  pipewire
 
 # GUI programs for most things, including
 # system management and chat platforms.

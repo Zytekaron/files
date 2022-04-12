@@ -12,7 +12,7 @@ base: |
 # Build-essential packages
 build: |
   base-devel linux-headers
-  go rust nodejs npm elixir postman
+  go rust nodejs npm elixir
 
 # Security-related packages
 security: |
