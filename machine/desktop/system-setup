@@ -38,6 +38,15 @@ makepkg -si
 curl -sfL https://files.zyte.dev/scripts/run/zget # verify content
 curl -sfL https://files.zyte.dev/scripts/run/zget | sudo Z=z bash
 
+# Enable multilib (required for wine, steam)
+# Uncomment `[multilib]` section of /etc/pacman.conf (L93-94)
+sudo pacman -Syu # sync changes
+
+# Set max journal size
+# Uncomment `SystemMaxUse=` in /etc/systemd/journald.conf
+# Set a value between 50M and 1G
+sudo systemctl restart systemd-journald
+
 # Configure and enable ufw !ufw
 sudo ufw enable
 sudo ufw allow ssh # only on simplesystems

@@ -13,8 +13,8 @@ installation: |
 # Base tools I use on most desktop installs,
 # roughly sorted by their importance to me.
 base: | 
-  zsh git ripgrep pipewire btop htop rsync
-  alacritty supervisor 7-zip onedrive-abraunegg
+  zsh git ripgrep pipewire btop htop rsync p7zip ffmpeg
+  alacritty supervisor wine wine-mono onedrive-abraunegg
   noto-fonts noto-fonts-cjk noto-fonts-emojis
 
 # GUI programs for most things, including
@@ -27,7 +27,7 @@ gui: |
 # Device and personal security related programs.
 security: |
   ufw fail2ban srm pam-u2f
-  veracrypt bitwarden authy
+  veracrypt bitwarden
 
 # Communication platforms and mostly GUI programs.
 communication: |
@@ -37,7 +37,7 @@ communication: |
 # Dependencies, then compilers, then editors.
 development: |
   base-devel linux-headers
-  go rust nodejs npm elixir postman
+  go rust nodejs npm elixir postman valgrind
   emacs visual-studio-code-bin jetbrains-toolbox
 
 # Command-line utilities and tools necessary or
@@ -51,7 +51,7 @@ cmdline-tools: |
 
 # Games! I only play Minecraft though. Pick one!
 games: |
-  minecraft-launcher lunar-client
+  steam minecraft-launcher lunar-client
 
 # Firmware for handling different filesystems.
 filesystems: |
@@ -60,5 +60,4 @@ filesystems: |
 # Window manager and other stuff like that.
 wm: |
   xorg xorg-server xorg-xinit
-  picom
-  dmenu
+  picom dmenu
