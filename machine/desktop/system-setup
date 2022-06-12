@@ -22,7 +22,7 @@ systemctl enable networkmanager
 passwd # set password
 
 # Create and setup user
-useradd -m -G wheel z
+useradd -mG wheel z
 passwd z # set password
 
 ################ User commands ################
@@ -49,8 +49,8 @@ sudo systemctl restart systemd-journald
 
 # Configure and enable ufw !ufw
 sudo ufw enable
-sudo ufw allow ssh # only on simplesystems
-sudo ufw allow http # any system is ok
+sudo ufw allow ssh
+sudo ufw allow http
 
 # Configure and enable fail2ban !fail2ban
 #   /etc/fail2ban/jail.local

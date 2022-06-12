@@ -1,4 +1,0 @@
-ACTION=="remove", \
-SUBSYSTEM=="block", \
-ENV{ID_SERIAL_SHORT}=="61252038755497360876", \
-RUN+="/usr/bin/xbuskill execute"

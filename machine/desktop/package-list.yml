@@ -8,7 +8,7 @@ README: |
 # system creation time via pacstrap.
 installation: |
   base linux linux-firmware
-  networkmanager grub
+  networkmanager systemd-boot
 
 # Base tools I use on most desktop installs,
 # roughly sorted by their importance to me.
@@ -38,7 +38,7 @@ communication: |
 development: |
   base-devel linux-headers
   go rust nodejs npm elixir postman valgrind
-  emacs visual-studio-code-bin jetbrains-toolbox
+  visual-studio-code-bin jetbrains-toolbox
 
 # Command-line utilities and tools necessary or
 # useful for development or system management.
@@ -46,7 +46,7 @@ cmdline-tools: |
   man man-db man-pages wget arch-wiki-docs
   tree fd exa aria2 nmap ps_mem pacman-contrib
   arch-install-scripts neofetch cpufetch
-  miniupnpc yt-dlp climate thefuck
+  miniupnpc yt-dlp climate thefuck brightnessctl
   net-tools bind speedtest-cli medium-cli
 
 # Games! I only play Minecraft though. Pick one!
